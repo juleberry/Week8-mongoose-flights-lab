@@ -4,11 +4,10 @@
 
 const express = require('express');
 const app = express();
-const fruits = require('./models/fruits');
-const veggies = require('./models/veggies');
+const Flight = require('./models/Flight.js');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Fruit = require('./models/Fruit');
+
 
 // -------------------------
 // Mongoose Connection Stuff
@@ -48,9 +47,9 @@ const flightsController = require('./controllers/flights');
 app.use('/flights', flightsController);
 // the app is using the route of /flights for the requests inside the flightsController
 
-// -------------------------
-// App Is Listening Thing
-// -------------------------
+// ------------------
+// App Is Listening
+// ------------------
 
 app.listen(3000, () => {
   console.log('listening on port 3000');
