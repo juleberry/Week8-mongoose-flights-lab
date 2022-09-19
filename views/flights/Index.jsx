@@ -3,7 +3,25 @@ const React = require('react');
 const Index = (props) => {
   return (
     <div>
-      {/* In here goes your list of all of the flights and their info */}
+      <h1>Index Route</h1>
+
+      <ul>
+      {
+      /* In here goes your list with airline name, flight no, and departure date/time */
+      props.flights.map((flight, index) => {
+        return (
+          <li>
+      {`/$flight._id`}<br/>
+      Airline: {flight.airline}
+      <br/>
+      Flight No: {flight.flightNo}
+      <br/>
+      Departure Date/Time: {flight.departs}
+    </li>
+        )}
+        )
+      }
+      </ul>
     </div>
   )
 }

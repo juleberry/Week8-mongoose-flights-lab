@@ -4,10 +4,9 @@
 
 const express = require('express');
 const app = express();
-const Flight = require('./models/Flight.js');
 require('dotenv').config();
 const mongoose = require('mongoose');
-
+const Flight = require('./models/Flight');
 
 // -------------------------
 // Mongoose Connection Stuff
@@ -24,7 +23,6 @@ mongoose.connect(process.env.MONGO_URI, {
 db.on('error', (error) => console.log(error.message + ' is mongod not running?'));
 db.on('open', () => console.log('mongo connected: ', mongoURI));
 db.on('close', () => console.log('mongo disconnected!'));
-
 
 // -------------------------
 // Setting Up View Engine

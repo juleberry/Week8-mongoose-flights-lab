@@ -7,7 +7,7 @@ const flightSchema = new Schema({
   airline: { type: String, enum: ['American', 'Southwest', 'United'] },
   flightNo: { type: Number, required: true, min: 10, max: 9999 },
   // still need to add 'one year from date created' constraints
-  departs: { type: Date }
+  departs: { type: Date, default: 2023 }
 });
 
 const Flight = model('Flight', flightSchema);
