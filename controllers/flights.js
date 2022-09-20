@@ -17,9 +17,14 @@ router.get('/', (req, res) => { // Route is technically /flights because in serv
 
 // New -- Form to CREATE a new Item
 
-router.get('flights/new', (req, res) => { // technically /flights/new
+router.get('/new', (req, res) => { // technically /flights/new
   // In here goes a res.render to show the 'create a new flight' form (New.jsx view)
-  res.render('flights/New');
+  const newFlight = new Flight();
+	// Obtain the default date
+	const dt = newFlight.departs;
+	// Format the date for the value attribute of the input
+	const departsDate = dt.toISOString().slice(0, 16);
+	res.render('flights/New', {departsDate});
 })
 
 // Delete -- action to DELETE an item
@@ -31,7 +36,7 @@ router.get('flights/new', (req, res) => { // technically /flights/new
 router.post('/', (req, res) => { // technically /flights
   // In here goes your Flight.create(), passing your req.body to it, and res.redirect-ing to your index page.
   Flight.create(req.body, (error, createdFlight) => {
-    res.redirect('../Index')
+    res.redirect('/flights')
   })
 })
 
@@ -53,9 +58,9 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // Show -- View of ONE ITEM
-router.get('/flights/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   Flight.findOne({ _id: req.params.id }, (error, foundFlight) => {
-    res.render('/Show', {
+    res.render('flights/Show', {
       flight: foundFlight
     });
   });

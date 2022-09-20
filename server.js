@@ -15,7 +15,7 @@ const Flight = require('./models/Flight');
 const mongoURI = process.env.MONGO_URI;
 db = mongoose.connection;
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
