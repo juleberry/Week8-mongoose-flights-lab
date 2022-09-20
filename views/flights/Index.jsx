@@ -2,8 +2,13 @@ const React = require('react');
 
 const Index = (props) => {
   return (
-    <div>
-      <h1>Flight Index</h1>
+    <div style={{
+      fontFamily: "Times New Roman",
+      color: "blue",
+      fontSize: "1rem",
+      padding: "1rem"
+    }}>
+      <h1 style={{color: "black"}}>Flight Index</h1>
         <a href="/flights/new">Create A New Flight</a>
       <ul>
       {
